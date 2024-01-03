@@ -1,0 +1,39 @@
+tasks = []
+
+def add_task(task):
+    tasks.append(task)
+    print("Task added successfully!")
+
+def view_task():
+    if tasks:
+        print("Tasks: ")
+        for index, task in enumerate(tasks, start=1):
+            print(f"{index}.{task}")
+    else:
+        print("No tasks available")  
+
+def remove_task(index):
+    if 1 <= index <= len(tasks):
+        removed_task = tasks.pop(index-1)   
+        print(f"Task '{removed_task}' removed successfully!")
+    else:
+        print("Invalid task index. Please enter a valid index.") 
+
+while True:
+    # display menu
+    print("1. Add task \n2. Remove task \n3. View task \n4. Exit")
+    choice = input("Select which one: ")
+
+    if choice == "1":
+        task = input("Enter task: ")
+        add_task(task)
+    elif choice == "2":
+        index = int(input("Enter index of task to remove: "))
+        remove_task(index)
+    elif choice == "3":
+        view_task()
+    elif choice == "4":
+        print("Exiting...")
+        break
+    else:
+        print("Incorrect input. Please enter a valid number.")
